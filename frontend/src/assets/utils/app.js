@@ -19,6 +19,9 @@ function renderProdutos(produtos){
         const card = document.createElement("div");
         card.className = "produto";
         card.innerHTML = `
+            <div class="imagem-container">
+                <img src="${produto.imagem}" alt="${produto.nome}" />
+            </div>
             <h2>${produto.nome}</h2>
             <p>${produto.descricao}</p>
             <p class="preco"> R$ ${produto.preco}</p>
@@ -27,3 +30,18 @@ function renderProdutos(produtos){
         container.appendChild(card);
     });
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+    const container = document.querySelector(".carrossel-wrapper");
+    const esquerda = document.getElementById("seta-esquerda");
+    const direita = document.getElementById("seta-direita");
+  
+    esquerda.addEventListener("click", () => {
+      container.scrollBy({ left: -300, behavior: "smooth" });
+    });
+  
+    direita.addEventListener("click", () => {
+      container.scrollBy({ left: 300, behavior: "smooth" });
+    });
+  });
+  
